@@ -1,31 +1,43 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const handleName = () => {
-    if (minCount > 0) {
-      minCount--;
-      setMin(minCount);
-    }
-  };
+  let time = 0
+  let [secCount, setSec] = useState(time);
+  let [minCount, setMin] = useState(time);
+  let [hourCount, setHour] = useState(time);
 
-  let [minCount, setMin] = useState(10);
+  if (secCount === 60){
+    minCount = minCount+1
+    secCount = 0
+    setMin(minCount)
+    setSec(secCount)
+  }
+
+  if (minCount === 60) {
+    hourCount = hourCount+1
+    minCount = 0
+    setHour(hourCount)
+    setMin(minCount)
+  }
+
+  useEffect (() => {
+    const myInterval = setInterval(() => {
+      setSec((secCount) => secCount+1);
+    }, 1000);
+    return () => clearInterval(myInterval);
+    }, []);
+ 
 
   return (
     <div className="App">
-      <h1>Countdown Timer</h1>
+      <h1>Timer</h1>
       <div className="timerDiv">
-        <button className="button" onClick={handleName}>
-          START
-        </button>
-
-        <h2>00:</h2>
-        <h2>00:</h2>
-        {/* <h2>00</h2> */}
-
-        {/* <h2>{days}</h2>
-        <h2>{hours}</h2> */}
+        <h2>{hourCount}</h2>
+        <h2>:</h2>
         <h2>{minCount}</h2>
+        <h2>:</h2>
+        <h2>{secCount}</h2>
       </div>
     </div>
   );

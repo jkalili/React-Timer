@@ -1,7 +1,5 @@
 body {
   background: #101e2a;
-  padding: 0 24px;
-  margin: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -13,18 +11,7 @@ body {
   color: #72a24d;
 }
 
-.button {
-  background-color: #72a24d;
-  border: transparent;
-  border-radius: 10px;
-  font-weight:700;
-  height: fit-content;
-  margin: 40px;
-  padding: 10px;
-  
-}
-
 .timerDiv {
 display:flex;
-align-items: center;
+justify-content: center;
 }
