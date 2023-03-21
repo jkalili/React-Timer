@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const handleName = () => {
+    if (minCount > 0) {
+      minCount--;
+      setMin(minCount);
+    }
+  };
+
+  let [minCount, setMin] = useState(10);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Countdown Timer</h1>
+      <div className="timerDiv">
+        <button className="button" onClick={handleName}>
+          START
+        </button>
+
+        <h2>00:</h2>
+        <h2>00:</h2>
+        {/* <h2>00</h2> */}
+
+        {/* <h2>{days}</h2>
+        <h2>{hours}</h2> */}
+        <h2>{minCount}</h2>
+      </div>
     </div>
   );
 }
